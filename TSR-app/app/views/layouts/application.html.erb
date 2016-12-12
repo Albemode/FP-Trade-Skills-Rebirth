@@ -10,11 +10,14 @@
 <body id="colorb">
   <nav id="navbg">
       <span>Trade Skills Rebirth</span>
-      <ul>
-        <li><%= link_to "Skills", skills_path%></li>
-        <li><%= link_to "Home", homes_path%></li>
-        <li></li>
-      </ul>
+      <div id="linkstab">
+        <ul>
+          <li><%= link_to "Skills", skills_path%></li>
+          <li><%= link_to "Home", homes_path%></li>
+          <li></li>
+        </ul>
+      </div>
+
       <div class="sign">
         <div id="navbarCollapse" class="collapse navbar-collapse">
 
@@ -23,18 +26,29 @@
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">Login<b class="caret"></b></a>
                   <ul role="menu" class="dropdown-menu">
 
-
                     <% if master_signed_in? %>
+                    <li class="nav-item active">
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="/masters/<%= current_master.id %>">Profile</a>
+                      </li>
+
                     <li><%= link_to "Sign out", destroy_master_session_path, :method => :delete%></li>
                     <% else %>
                     <li><%= link_to "Master", new_master_session_path %></li>
                     <% end %>
-                    
+
                     <% if apprentice_signed_in? %>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="/apprentices/<%= current_apprentice.id %>">Profile</a>
+                    </li>
+
                     <li><%= link_to "Sign out", destroy_apprentice_session_path, :method => :delete%></li>
                     <% else %>
                     <li><%= link_to "Apprentice", new_apprentice_session_path %></li>
                     <% end %>
+
                   </ul>
               </li>
 
