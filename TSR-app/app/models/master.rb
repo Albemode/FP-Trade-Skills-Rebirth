@@ -3,5 +3,7 @@ class Master < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_one :master
+  has_one :apprentice
+  has_many :events
+  has_many :logs
 end
